@@ -1,6 +1,5 @@
 import torch
 import cv2
-import json
 import base64
 from ultralytics import YOLO
 from torchvision.models import densenet121
@@ -8,15 +7,9 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 from PIL import Image
 
-# YOLO 모델 로드 및 새로운 클래스 이름 설정
-def load_yolo_model_with_new_classes(model_path, class_names_path):
+# YOLO 모델 로드
+def load_yolo_model(model_path):
     model = YOLO(model_path)
-    with open(class_names_path, "r") as f:
-        new_class_names = json.load(f)
-    model.model.names = new_class_names
-    print("새로운 클래스 이름:")
-    print(type(model.model.names), len(model.model.names))
-    print(model.model.names)
     return model
 
 # DenseNet 모델 로드
@@ -85,8 +78,8 @@ def process_video(video_path, densenet_model, yolo_model, device):
             yolo_class = "unknown"
             for result in results.boxes:
                 cls = int(result.cls[0].item())
-                if str(cls) in yolo_model.model.names:
-                    yolo_class = yolo_model.model.names[str(cls)]
+                if cls in yolo_model.model.names:
+                    yolo_class = yolo_model.model.names[cls]
                     break
 
             # Convert frame to base64 string
@@ -119,13 +112,12 @@ def process_video(video_path, densenet_model, yolo_model, device):
 
 # 메인 함수
 if __name__ == "__main__":
-    yolo_model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\finally_yolo13.pt'
-    class_names_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\class_names.json'
+    yolo_model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\YOLOv8 best.pt'
     densenet_model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\code\\densenet_model10.pth'
-    #video_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\code\\car_car (1).mp4'
     video_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\car-crash.mov'
-    # YOLO 모델 로드 및 새로운 클래스 이름 설정
-    yolo_model = load_yolo_model_with_new_classes(yolo_model_path, class_names_path)
+
+    # YOLO 모델 로드
+    yolo_model = load_yolo_model(yolo_model_path)
 
     # DenseNet 모델 로드
     densenet_model, device = load_densenet_model(densenet_model_path)
