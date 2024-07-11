@@ -15,7 +15,7 @@ def load_model():
     num_features = model.classifier.in_features
     model.classifier = nn.Linear(num_features, 2)
     try:
-        model.load_state_dict(torch.load('C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\code\\densenet_model10.pth', map_location=device))
+        model.load_state_dict(torch.load('densenet_model10.pth', map_location=device))
     except Exception as e:
         print(f"Error loading model: {e}")
         exit()
@@ -93,5 +93,5 @@ def process_video(video_path, model, device):
 # Main function to load the model and process the video
 if __name__ == "__main__":
     model, device = load_model()
-    video_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\code\\car_car (1).mp4' # 이 영상에서의 대부분의 충돌을 잘 감지함  
+    video_path = 'car_car (1).mp4' # 이 영상에서의 대부분의 충돌을 잘 감지함  
     process_video(video_path, model, device)

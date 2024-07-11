@@ -121,7 +121,7 @@ def sendData(accident_info):
         'requestDto': (None, requestDtoJson, 'application/json')
     }
     # 자바 스프링 부트 서버의 URL (적절하게 수정 필요)
-    url = 'http://localhost:8080/api/accident/receiving-data'
+    url = '# 자바 스프링 부트 서버의 URL (적절하게 수정 필요)'
     # POST 요청 보내기
     response = requests.post(url, files=files)
     return response
@@ -141,7 +141,7 @@ def process_video(source, densenet_model, yolo_model, device, gps_info):
 
     frame_count = 0
     results = []
-    folder_path = 'C:\\Capston\\accident-detection-ai\\accident-detection-ai\\img'
+    folder_path = 'C:accident-detection-ai\\img'
     frame_times = []
     accident_count = 0
     frame_skip = 1  # 초기 frame_skip 값
@@ -212,7 +212,7 @@ def process_streaming_video(source, densenet_model, yolo_model, device, gps_info
 
     frame_count = 0
     results = []
-    folder_path = 'C:\\Capston\\accident-detection-ai\\accident-detection-ai\\img'
+    folder_path = 'accident-detection-ai\\img'
     frame_skip = 1  # 초기 frame_skip 값
 
     while cap.isOpened():

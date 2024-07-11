@@ -70,8 +70,8 @@ def process_video(video_path, model):
 
 # 메인 함수
 if __name__ == "__main__":
-    model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\final code\YOLO 모델 학습 결과\\Parameter\\best (1).pt'
-    video_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\final code\\Video\\car-crash.mov'
+    model_path = 'best (1).pt'
+    video_path = 'car-crash.mov'
 
     # YOLO 모델 로드
     model = load_yolo_model(model_path)

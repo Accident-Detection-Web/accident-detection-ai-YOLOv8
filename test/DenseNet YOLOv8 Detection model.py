@@ -112,9 +112,9 @@ def process_video(video_path, densenet_model, yolo_model, device):
 
 # 메인 함수
 if __name__ == "__main__":
-    yolo_model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\YOLOv8 best.pt'
-    densenet_model_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\code\\densenet_model10.pth'
-    video_path = 'C:\\2024\\On-Campus Activities\\Capstone\\2024_Capstone\\Capstone Project\\crash-detect code\\car-crash.mov'
+    yolo_model_path = 'YOLOv8 best.pt'
+    densenet_model_path = 'densenet_model10.pth'
+    video_path = 'car-crash.mov'
 
     # YOLO 모델 로드
     yolo_model = load_yolo_model(yolo_model_path)

@@ -134,7 +134,7 @@ def process_video(source, densenet_model, yolo_model, device, gps_info):
 
     frame_count = 0
     results = []
-    folder_path = 'C:\\Capston\\accident-detection-ai\\accident-detection-ai\\img'
+    folder_path = 'C:accident-detection-ai\\img'
     frame_times = []
     accident_count = 0
     frame_skip = 1  # 초기 frame_skip 값
